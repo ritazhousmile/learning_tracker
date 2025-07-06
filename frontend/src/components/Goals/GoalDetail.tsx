@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -54,11 +54,7 @@ const GoalDetail: React.FC = () => {
   const [taskFormOpen, setTaskFormOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<Task | null>(null);
 
-  useEffect(() => {
-    fetchGoalData();
-  }, [id]);
-
-  const fetchGoalData = async () => {
+  const fetchGoalData = useCallback(async () => {
     if (!id) return;
     
     try {
@@ -77,7 +73,11 @@ const GoalDetail: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchGoalData();
+  }, [id, fetchGoalData]);
 
   const handleEditGoal = async (updatedGoal: Goal) => {
     try {

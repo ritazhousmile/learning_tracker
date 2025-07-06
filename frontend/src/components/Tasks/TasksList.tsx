@@ -20,7 +20,6 @@ import {
 import {
   Add as AddIcon,
   Search as SearchIcon,
-  FilterList as FilterIcon,
 } from '@mui/icons-material';
 import { Task, Goal } from '../../types';
 import { taskService, goalService } from '../../services/api';

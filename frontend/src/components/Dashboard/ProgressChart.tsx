@@ -34,21 +34,21 @@ const ProgressChart: React.FC = () => {
   const [selectedDays, setSelectedDays] = useState<number>(30);
 
   useEffect(() => {
+    const fetchProgressData = async () => {
+      try {
+        setLoading(true);
+        const response = await api.get<ProgressResponse>(`/api/dashboard/progress?days=${selectedDays}`);
+        setProgressData(response.data);
+      } catch (err: any) {
+        setError('Failed to load progress data');
+        console.error('Progress data error:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchProgressData();
   }, [selectedDays]);
-
-  const fetchProgressData = async () => {
-    try {
-      setLoading(true);
-      const response = await api.get<ProgressResponse>(`/api/dashboard/progress?days=${selectedDays}`);
-      setProgressData(response.data);
-    } catch (err: any) {
-      setError('Failed to load progress data');
-      console.error('Progress data error:', err);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return <Box>Loading chart...</Box>;

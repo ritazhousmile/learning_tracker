@@ -69,7 +69,7 @@ const TaskForm: React.FC<TaskFormProps> = (props) => {
 
   useEffect(() => {
     if (isLegacyInterface) {
-      const { task, open } = props as LegacyTaskFormProps;
+      const { task } = props as LegacyTaskFormProps;
       if (task) {
         setFormData({
           title: task.title,

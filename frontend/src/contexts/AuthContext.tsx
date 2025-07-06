@@ -67,7 +67,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const signup = async (userData: UserCreate) => {
     try {
-      const response = await api.post<User>('/api/auth/signup', userData);
+      await api.post<User>('/api/auth/signup', userData);
       
       // After successful signup, automatically log in
       await login({

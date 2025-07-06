@@ -53,7 +53,7 @@ const GoalForm: React.FC<GoalFormProps> = (props) => {
 
   useEffect(() => {
     if (isLegacyInterface) {
-      const { goal, open } = props as LegacyGoalFormProps;
+      const { goal } = props as LegacyGoalFormProps;
       if (goal) {
         setFormData({
           title: goal.title,

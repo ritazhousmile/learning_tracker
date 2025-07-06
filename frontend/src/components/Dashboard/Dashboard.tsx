@@ -19,7 +19,6 @@ import {
   Fab,
 } from '@mui/material';
 import {
-  TrendingUp,
   Assignment,
   CheckCircle,
   Schedule,

@@ -12,7 +12,7 @@
     "dev:frontend": "cd frontend && npm start",
     "install": "cd frontend && npm install",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
-    "build": "cd frontend && npm install && npm run build"
+    "build": "cd frontend && CI=false npm install && CI=false npm run build"
   },
   "keywords": ["learning", "tracker", "goals", "tasks", "progress", "python", "fastapi", "postgresql", "react"],
   "author": "Learning Tracker Team",

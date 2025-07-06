@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import {
   Box,
@@ -50,11 +50,7 @@ const TaskDetail: React.FC = () => {
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
-  useEffect(() => {
-    fetchTaskData();
-  }, [id]);
-
-  const fetchTaskData = async () => {
+  const fetchTaskData = useCallback(async () => {
     if (!id) return;
     
     try {
@@ -73,7 +69,11 @@ const TaskDetail: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchTaskData();
+  }, [fetchTaskData]);
 
   const handleEditTask = async (updatedTask: any) => {
     try {
