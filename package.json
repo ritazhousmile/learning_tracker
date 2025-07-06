@@ -10,8 +10,9 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "cd backend && python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000",
     "dev:frontend": "cd frontend && npm start",
+    "install": "cd frontend && npm install",
     "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt",
-    "build": "cd frontend && npm run build"
+    "build": "cd frontend && npm install && npm run build"
   },
   "keywords": ["learning", "tracker", "goals", "tasks", "progress", "python", "fastapi", "postgresql", "react"],
   "author": "Learning Tracker Team",
